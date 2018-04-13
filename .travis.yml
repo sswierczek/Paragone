@@ -10,10 +10,10 @@ matrix:
           packages:
             - libstdc++6
             - fonts-droid
-          before_script:
-            - git clone https://github.com/flutter/flutter.git -b beta
-          script:
-            - ./flutter/bin/flutter analyze lib test
+      before_script:
+        - git clone https://github.com/flutter/flutter.git -b beta
+      script:
+        - ./flutter/bin/flutter analyze lib test
     - os: linux
       language: android
       licenses:
