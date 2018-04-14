@@ -9,3 +9,5 @@ build/
 ios/.generated/
 packages
 .flutter-plugins
+
+/assets/config/firebase_config.json
