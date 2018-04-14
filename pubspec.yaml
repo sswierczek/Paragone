@@ -1,5 +1,5 @@
 name: paragone
-description: Flutter app based on TMDb API.
+description: App for managing billis from parties.
 
 dependencies:
   flutter:
