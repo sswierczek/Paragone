@@ -1,7 +1,7 @@
-FlutterVod
+Paragone
 =======
 
-Flutter app based on TMDb API.
+App for managing billis from parties. 
 
 [![Build Status](https://travis-ci.org/sswierczek/FlutterVod.svg?branch=master)](https://travis-ci.org/sswierczek/FlutterVod)
 ## Getting Started
