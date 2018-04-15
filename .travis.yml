@@ -57,6 +57,8 @@ matrix:
       before_script:
         - pip2 install six
         - brew update
+        - brew install cocoapods
+        - pod setup
         - brew install libimobiledevice
         - brew install ideviceinstaller
         - brew install ios-deploy
