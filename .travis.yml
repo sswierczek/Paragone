@@ -66,6 +66,7 @@ matrix:
         - gem install cocoapods
         - pod setup
       script:
+        - ./flutter/bin/flutter doctor -v
         - ./flutter/bin/flutter -v build ios --no-codesign
 
 cache:
