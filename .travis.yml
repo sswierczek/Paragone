@@ -58,12 +58,13 @@ matrix:
       before_script:
         - pip2 install six
         - brew update
-        - brew install cocoapods
-        - pod setup
+        - brew install ruby
         - brew install libimobiledevice
         - brew install ideviceinstaller
         - brew install ios-deploy
         - git clone https://github.com/flutter/flutter.git -b beta
+        - gem install cocoapods
+        - pod setup
       script:
         - ./flutter/bin/flutter -v build ios --no-codesign
 
