@@ -26,6 +26,7 @@ matrix:
           - platform-tools
           - android-27
           - build-tools-27.0.3
+          - build-tools-26.0.2 # Required for FlutterFire
           - sys-img-armeabi-v7a-google_apis-27
           - extra-android-m2repository
           - extra-google-m2repository
