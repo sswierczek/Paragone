@@ -10,4 +10,6 @@ ios/.generated/
 packages
 .flutter-plugins
 
+/android/app/google-services.json
+/ios/Runner/GoogleService-Info.plist
 /assets/config/firebase_config.json
