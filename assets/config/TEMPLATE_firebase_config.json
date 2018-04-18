@@ -1,8 +1,0 @@
-// TODO Remove TEMPLATE_ prefix and this comment before use
-{
-  "databaseUrl": "PUT_YOUR_DATA_HERE",
-  "apiKey": "PUT_YOUR_DATA_HERE",
-  "appIdIos": "PUT_YOUR_DATA_HERE",
-  "apIdAndroid": "PUT_YOUR_DATA_HERE",
-  "gcnSenderId": "PUT_YOUR_DATA_HERE"
-}

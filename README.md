@@ -13,11 +13,7 @@ For help getting started with Flutter, view our online
 
 ### Configure Firebase
 
-Rename file `/assets/config/TEMPLATE_firebase_config.json` to `/assets/config/firebase_config.json`.
-
-Fill config values from your Firebase project settings.
-
-From Firebase copy files for two applications:
+From Firebase Console copy files for two applications.
 
 Copy your Android `google-services.json` inside `/android/app/`
 
