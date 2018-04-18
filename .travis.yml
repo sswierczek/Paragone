@@ -63,11 +63,11 @@ matrix:
         - brew install ideviceinstaller
         - brew install ios-deploy
         - git clone https://github.com/flutter/flutter.git -b beta
-        - sudo gem update --system
+        - yes | gem uninstall cocoapods
+        - gem update --system
         - gem install cocoapods -v 1.4.0
         - pod _1.4.0_ setup # Firebase plugin doesn't work with 1.5.0
       script:
-        - ./flutter/bin/flutter doctor -v
         - ./flutter/bin/flutter -v build ios --no-codesign
 
 cache:
