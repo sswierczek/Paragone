@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "609064670842",
+    "firebase_url": "https://paragone-2103c.firebaseio.com",
+    "project_id": "paragone-2103c",
+    "storage_bucket": "paragone-2103c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:609064670842:android:4e72bf7f9c2bb2c1",
+        "android_client_info": {
+          "package_name": "com.example.paragone"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "609064670842-a8c1ceo7e71sj6v0r99lsura9bif7cai.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC7mgHNeMy4Kp_RblG-mLkzVZCAC90vPoM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

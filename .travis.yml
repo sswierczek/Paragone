@@ -26,6 +26,7 @@ matrix:
           - platform-tools
           - android-27
           - build-tools-27.0.3
+          - build-tools-26.0.2 # Required for FlutterFire
           - sys-img-armeabi-v7a-google_apis-27
           - extra-android-m2repository
           - extra-google-m2repository
@@ -57,10 +58,15 @@ matrix:
       before_script:
         - pip2 install six
         - brew update
+        - brew install ruby
         - brew install libimobiledevice
         - brew install ideviceinstaller
         - brew install ios-deploy
         - git clone https://github.com/flutter/flutter.git -b beta
+        - yes | gem uninstall cocoapods
+        - gem update --system
+        - gem install cocoapods -v 1.4.0
+        - pod _1.4.0_ setup # Firebase plugin doesn't work with 1.5.0
       script:
         - ./flutter/bin/flutter -v build ios --no-codesign
 
