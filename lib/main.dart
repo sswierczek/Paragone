@@ -97,9 +97,6 @@ class _MyHomePageState extends State<MyHomePage> {
                     .textTheme
                     .display1,
               ),
-              new FlatButton(onPressed: () {
-                Navigator.push(context, new MaterialPageRoute(builder: (context) => new MenuListPage()));
-              }, child: new Text("Open Menu"))
             ],
           ),
         ),
