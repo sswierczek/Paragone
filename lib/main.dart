@@ -1,10 +1,13 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:paragone/repo.dart';
+import 'package:paragone/app/di/app_injector.dart';
+import 'package:paragone/core/repository/repo.dart';
 
 Future<void> main() async {
-  final repository = await Repository().configure();
+  var appInjector = AppInjector().init();
+  var repository = await appInjector.getInstance(Repository).configure();
+
   runApp(new MyApp(repository));
 }
 

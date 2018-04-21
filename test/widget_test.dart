@@ -7,12 +7,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
-
 import 'package:paragone/main.dart';
-import 'package:paragone/repo.dart';
+import 'package:paragone/core/repository/repo.dart';
 
 class MockRepository extends Mock implements Repository {}
-
 
 void main() {
   final repository = MockRepository();
