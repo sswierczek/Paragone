@@ -1,25 +1,30 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_redux/flutter_redux.dart';
+import 'package:paragone/app/reducer.dart';
+import 'package:paragone/menu_list/menu_list_page.dart';
+import 'package:paragone/menu_list/menu_list_state.dart';
+import 'package:redux/redux.dart';
 
 void main() => runApp(new MyApp());
 
 class MyApp extends StatelessWidget {
+  final Store<MenuListState> store = Store<MenuListState>(
+    appReducer,
+    initialState: MenuListState.initialState(),
+  );
+
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) =>
-      MaterialApp(
-        title: 'Flutter Demo',
-        theme: new ThemeData(
-          // This is the theme of your application.
-          //
-          // Try running your application with "flutter run". You'll see the
-          // application has a blue toolbar. Then, without quitting the app, try
-          // changing the primarySwatch below to Colors.green and then invoke
-          // "hot reload" (press "r" in the console where you ran "flutter run",
-          // or press Run > Flutter Hot Reload in IntelliJ). Notice that the
-          // counter didn't reset back to zero; the application is not restarted.
-          primarySwatch: Colors.blue,
+      StoreProvider(
+        store: store,
+        child: MaterialApp(
+          title: 'Flutter Demo',
+          theme: new ThemeData(
+            primarySwatch: Colors.blue,
+          ),
+          home: new MenuListPage(),
         ),
-        home: new MyHomePage(title: 'Flutter Demo Home Page'),
       );
 }
 
@@ -92,6 +97,9 @@ class _MyHomePageState extends State<MyHomePage> {
                     .textTheme
                     .display1,
               ),
+              new FlatButton(onPressed: () {
+                Navigator.push(context, new MaterialPageRoute(builder: (context) => new MenuListPage()));
+              }, child: new Text("Open Menu"))
             ],
           ),
         ),
