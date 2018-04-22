@@ -3,6 +3,7 @@ import 'package:flutter_redux/flutter_redux.dart';
 import 'package:meta/meta.dart';
 import 'package:paragone/app/state.dart';
 import 'package:paragone/menu_list/model/menu_item.dart';
+import 'package:paragone/menu_list/menu_list_actions.dart';
 import 'package:redux/redux.dart';
 
 class MenuListPage extends StatelessWidget {
@@ -10,6 +11,7 @@ class MenuListPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) => StoreConnector<AppState, _ViewModel> (
     converter: (Store<AppState> store) => _ViewModel.create(store),
+    onInit: (Store<AppState> store) => store.dispatch(FetchMenuAction(store.state.menuListState.menuList)),
     builder: ((BuildContext context, _ViewModel viewModel) => Scaffold(
       appBar: AppBar(
         title: Text(viewModel.pageTitle),
@@ -35,7 +37,7 @@ class _ViewModel {
     List<_MenuListItemViewModel> items = store.state.menuListState.menuList
         .map((MenuItem item) => _MenuListItemViewModel(item.name))
         .toList();
-    return _ViewModel("Menu", items);
+    return _ViewModel('Menu', items);
   }
 }
 

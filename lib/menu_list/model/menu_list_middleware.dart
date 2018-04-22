@@ -8,15 +8,14 @@ class MenuListMiddleware extends MiddlewareClass<AppState> {
 
   @override
   void call(Store<AppState> store, action, NextDispatcher next) async {
+    print(action.toString());
     next(action);
-
     if(action is FetchMenuAction) {
-      await _fetchMenuItems();
+      var items = await _fetchMenuItems();
+      next(FetchMenuAction(items));
     }
   }
 
-  Future<List<MenuItem>> _fetchMenuItems() async {
-    await Future.sync(() => Duration(seconds: 2));
-    return [MenuItem("Pszenica"), MenuItem("Pepperoni")];
-  }
+  Future<List<MenuItem>> _fetchMenuItems() async =>
+    Future.delayed(const Duration(seconds: 3), () => [MenuItem("Pszenica"), MenuItem("Pepperoni")]);
 }

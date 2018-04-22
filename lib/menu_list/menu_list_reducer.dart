@@ -7,4 +7,4 @@ final menuListReducer = combineReducers<MenuListState>([
 ]);
 
 MenuListState _fetchMenuItems(MenuListState state, FetchMenuAction action) =>
-    MenuListState(menuList: List.unmodifiable(state.menuList..addAll(action.items)));
+    MenuListState(menuList: []..addAll(state.menuList)..addAll(action.items));
