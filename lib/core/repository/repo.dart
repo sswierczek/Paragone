@@ -2,17 +2,30 @@ import 'dart:async';
 
 import 'package:firebase_database/firebase_database.dart';
 
-class Repository {
-  FirebaseDatabase _database;
+abstract class Repository {
+  Future<Repository> configure();
 
+  Future<int> incrementCounter();
+
+  Future<int> getCounter();
+
+  cleanUp();
+
+  factory Repository() => _FirebaseRepository();
+}
+
+class _FirebaseRepository implements Repository {
+  FirebaseDatabase _database;
   DatabaseReference _counterRef;
 
+  @override
   Future<Repository> configure() async {
     _database = new FirebaseDatabase();
     await _database.setPersistenceEnabled(true);
     return this;
   }
 
+  @override
   Future<int> incrementCounter() async {
     final TransactionResult transactionResult =
         await _counterRef.runTransaction((MutableData mutableData) async {
@@ -23,6 +36,7 @@ class Repository {
   }
 
   // FIXME Implement real time updates
+  @override
   Future<int> getCounter() async {
     var value = 0;
     _counterRef = _database.reference().child('counter');
@@ -32,6 +46,7 @@ class Repository {
     return value;
   }
 
+  @override
   void cleanUp() {
     // nothing for now
   }
