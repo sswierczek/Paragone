@@ -16,7 +16,11 @@ class MenuListPage extends StatelessWidget {
       appBar: AppBar(
         title: Text(viewModel.pageTitle),
       ),
-      body:ListView(children: viewModel.items.map(_createListRow).toList()),
+      body:ListView.builder(
+        itemCount: viewModel.items.length,
+        itemBuilder: (BuildContext context, int index) =>
+          _createListRow(viewModel.items[index]),
+      ),
     ))
   );
 

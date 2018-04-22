@@ -17,5 +17,5 @@ class MenuListMiddleware extends MiddlewareClass<AppState> {
   }
 
   Future<List<MenuItem>> _fetchMenuItems() async =>
-    Future.delayed(const Duration(seconds: 3), () => [MenuItem("Pszenica"), MenuItem("Pepperoni")]);
+    Future.delayed(const Duration(seconds: 3), () => [MenuItem('Pszenica'), MenuItem('Pepperoni')]);
 }
