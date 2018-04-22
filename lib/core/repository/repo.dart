@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:firebase_database/firebase_database.dart';
+import 'package:meta/meta.dart';
 
 abstract class Repository {
   Future<Repository> configure();
@@ -11,27 +12,29 @@ abstract class Repository {
 
   cleanUp();
 
-  factory Repository() => _FirebaseRepository();
+  factory Repository() => FirebaseRepository(new FirebaseDatabase());
 }
 
-class _FirebaseRepository implements Repository {
+class FirebaseRepository implements Repository {
   FirebaseDatabase _database;
   DatabaseReference _counterRef;
 
+  @visibleForTesting
+  FirebaseRepository(this._database);
+
   @override
   Future<Repository> configure() async {
-    _database = new FirebaseDatabase();
     await _database.setPersistenceEnabled(true);
     return this;
   }
 
   @override
   Future<int> incrementCounter() async {
-    final TransactionResult transactionResult =
-        await _counterRef.runTransaction((MutableData mutableData) async {
+    var transactionHandler = (MutableData mutableData) async {
       mutableData.value = (mutableData.value ?? 0) + 1;
       return mutableData;
-    });
+    };
+    var transactionResult = await _counterRef.runTransaction(transactionHandler);
     return transactionResult.dataSnapshot.value;
   }
 
