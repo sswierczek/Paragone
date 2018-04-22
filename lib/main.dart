@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:paragone/app/reducer.dart';
+import 'package:paragone/app/state.dart';
 import 'package:paragone/menu_list/menu_list_page.dart';
-import 'package:paragone/menu_list/menu_list_state.dart';
+import 'package:paragone/menu_list/model/menu_list_middleware.dart';
 import 'package:redux/redux.dart';
 
 void main() => runApp(new MyApp());
 
 class MyApp extends StatelessWidget {
-  final Store<MenuListState> store = Store<MenuListState>(
+  final Store<AppState> store = Store<AppState>(
     appReducer,
-    initialState: MenuListState.initialState(),
+    initialState: AppState.initial(),
+    middleware: [MenuListMiddleware()],
   );
 
   // This widget is the root of your application.

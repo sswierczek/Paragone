@@ -1,14 +1,11 @@
-import 'package:paragone/menu_list/menu_item.dart';
+import 'package:paragone/menu_list/model/menu_item.dart';
 
 class MenuListState {
   final List<MenuItem> menuList;
-  final MenuState state;
 
-  MenuListState(this.menuList, this.state);
+  MenuListState({this.menuList,});
 
-  factory MenuListState.initialState() => MenuListState(List.unmodifiable([MenuItem("PSZENICA"), MenuItem("PEPPERONI")]), MenuState.initial);
-}
-
-enum MenuState {
-  initial, listWithItems
+  factory MenuListState.initial() => MenuListState(
+    menuList: [],
+  );
 }

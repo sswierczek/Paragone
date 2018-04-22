@@ -1,9 +1,7 @@
-import 'package:paragone/menu_list/menu_item.dart';
+import 'package:paragone/menu_list/model/menu_item.dart';
 
-class AddAction {
+class FetchMenuAction {
   final List<MenuItem> items;
 
-  const AddAction(this.items);
+  const FetchMenuAction(this.items);
 }
-
-class DisplayListAction {}
