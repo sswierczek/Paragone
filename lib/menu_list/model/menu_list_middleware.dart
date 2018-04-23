@@ -7,13 +7,13 @@ import 'package:redux/redux.dart';
 class MenuListMiddleware extends MiddlewareClass<AppState> {
 
   @override
-  void call(Store<AppState> store, action, NextDispatcher next) async {
-    print(action.toString());
-    next(action);
+  void call(Store<AppState> store, action, NextDispatcher next) {
     if(action is FetchMenuAction) {
-      var items = await _fetchMenuItems();
-      next(FetchMenuAction(items));
+      _fetchMenuItems().then((menuList) {
+        store.dispatch(MenuItemsLoadedAction(menuList));
+      });
     }
+    next(action);
   }
 
   Future<List<MenuItem>> _fetchMenuItems() async =>
