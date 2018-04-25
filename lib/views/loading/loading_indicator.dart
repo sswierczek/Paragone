@@ -5,6 +5,6 @@ class LoadingIndicator extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => new Center(
-      child: new CircularProgressIndicator(),
-    );
+        child: new CircularProgressIndicator(),
+      );
 }

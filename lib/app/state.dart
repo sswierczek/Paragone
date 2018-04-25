@@ -9,8 +9,7 @@ class AppState {
     this.menuListState,
   });
 
-  factory AppState.initial() =>
-      AppState(
+  factory AppState.initial() => AppState(
         menuListState: MenuListState.initial(),
       );
 }
