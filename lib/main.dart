@@ -3,36 +3,37 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:paragone/app/di/app_injector.dart';
 import 'package:paragone/core/repository/repo.dart';
+import 'package:flutter_redux/flutter_redux.dart';
+import 'package:paragone/app/state.dart';
+import 'package:paragone/menu_list/menu_list_page.dart';
+import 'package:redux/redux.dart';
 
 Future<void> main() async {
   var appInjector = AppInjector().init();
   var repository = await appInjector.getInstance(Repository).configure();
+  var store = await appInjector.getInstance(Store);
 
-  runApp(new MyApp(repository));
+  runApp(new MyApp(repository, store));
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp(this.repository);
+  const MyApp(this.repository, this.store);
 
   final repository;
+  final Store<AppState> store;
 
   // This widget is the root of your application.
   @override
-  Widget build(BuildContext context) => MaterialApp(
-        title: 'Flutter Demo',
-        theme: new ThemeData(
-          // This is the theme of your application.
-          //
-          // Try running your application with "flutter run". You'll see the
-          // application has a blue toolbar. Then, without quitting the app, try
-          // changing the primarySwatch below to Colors.green and then invoke
-          // "hot reload" (press "r" in the console where you ran "flutter run",
-          // or press Run > Flutter Hot Reload in IntelliJ). Notice that the
-          // counter didn't reset back to zero; the application is not restarted.
-          primarySwatch: Colors.blue,
+  Widget build(BuildContext context) =>
+      StoreProvider(
+        store: store,
+        child: MaterialApp(
+          title: 'Flutter Demo',
+          theme: new ThemeData(
+            primarySwatch: Colors.blue,
+          ),
+          home: new MenuListPage(),
         ),
-        home: new MyHomePage(
-            title: 'Flutter Demo Home Page', repository: repository),
       );
 }
 

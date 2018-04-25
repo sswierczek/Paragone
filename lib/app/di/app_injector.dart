@@ -1,4 +1,7 @@
+import 'package:paragone/app/store.dart';
 import 'package:paragone/core/repository/repo.dart';
+import 'package:paragone/menu_list/model/menu_list_repository.dart';
+import 'package:redux/redux.dart';
 
 abstract class AppInjector {
   AppInjector init();
@@ -16,6 +19,8 @@ class _ManualAppInjector implements AppInjector {
   @override
   AppInjector init() {
     singletons[Repository] = _createRepository();
+    singletons[MenuListRepository] = _createMenuListRepository();
+    singletons[Store] = _createStore();
     return this;
   }
 
@@ -31,4 +36,6 @@ class _ManualAppInjector implements AppInjector {
   // Use dependencies declared before like Repository(singletons[TYPE], singletons[TYPE2], NotSingleton()) etc.
   // not very sophisticated but this is what we have now
   _createRepository() => Repository();
+  _createMenuListRepository() => MenuListRepository();
+  _createStore() => createStore(singletons[MenuListRepository]);
 }
