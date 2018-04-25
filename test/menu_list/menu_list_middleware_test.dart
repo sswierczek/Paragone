@@ -26,14 +26,11 @@ void main() {
 
   group('Menu List Middleware', () {
     test('should load menu items in response to a FetchMenuAction', () {
-      // GIVEN
       final menuItems = [MenuItem('test')];
       when(repository.fetchMenuItems()).thenReturn(Future.value(menuItems));
 
-      // WHEN
       store.dispatch(FetchMenuAction());
 
-      // THEN
       verify(repository.fetchMenuItems());
     });
   });
