@@ -7,11 +7,11 @@ import 'package:paragone/app/state.dart';
 import 'package:paragone/menu_list/menu_list_page.dart';
 import 'package:redux/redux.dart';
 
-Future<void> main() async {
+Future main() async {
   var appInjector = AppInjector().init();
   var store = await appInjector.getInstance(Store);
 
-  runApp(new MyApp(store));
+  runApp(MyApp(store));
 }
 
 class MyApp extends StatelessWidget {
@@ -20,15 +20,14 @@ class MyApp extends StatelessWidget {
   final Store<AppState> store;
 
   @override
-  Widget build(BuildContext context) =>
-      StoreProvider(
+  Widget build(BuildContext context) => StoreProvider(
         store: store,
         child: MaterialApp(
           title: 'Paragone',
-          theme: new ThemeData(
+          theme: ThemeData(
             primarySwatch: Colors.blue,
           ),
-          home: new MenuListPage(),
+          home: MenuListPage(),
         ),
       );
 }
