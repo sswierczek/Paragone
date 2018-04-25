@@ -8,7 +8,7 @@ import 'package:paragone/menu_list/model/menu_list_repository.dart';
 import 'package:redux/redux.dart';
 import 'package:mockito/mockito.dart';
 
-class MockMenuListRepository extends Mock implements MenuListRepository {}
+import '../mocks/mocks_menu_list.dart';
 
 void main() {
 
